@@ -10,8 +10,11 @@ import 'package:bhaile/view/homeScreen/widgets/topOne.dart';
 import 'package:bhaile/view/homeScreen/widgets/whatwedo.dart';
 import 'package:bhaile/widgets/boldText.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 
+import '../../controllers/homeScreenController.dart';
+import '../../controllers/payment_provider.dart';
 import 'drawers/optionalDrawer.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -24,8 +27,10 @@ class HomeScreen extends StatelessWidget {
     var width= w;
     var height= h;
 
+
     return SafeArea(
         child: Scaffold(
+
             drawer: notLoggedIn
                 ? OptionalDrawer(h: h, w: w)
                 : MainDrawer(h: h, w: w),
@@ -58,11 +63,6 @@ class HomeScreen extends StatelessWidget {
                           color: AppColors.PRIMARY_DARK,
                           size: 14.sp,
                         ),
-                        // BoldText(
-                        //   text: 'view all',
-                        //   color: AppColors.PRIMARY_DARK,
-                        //   size: 7.sp,
-                        // )
                       ],
                     ),
                   ),
@@ -98,101 +98,103 @@ class HomeScreen extends StatelessWidget {
                   ),
                   HappyCustomers(h: h, w: w),
 
-                  Container(
-                    width:w/5,
-                    height: h/5,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.all(Radius.elliptical(w / 30, w / 30)),
-                    ),
+              SizedBox(height: height/30,),
 
-                  ),
 
-                  SizedBox(height: height / 10,),
+                  Padding(
+                    padding: EdgeInsets.all(w/20),
+                    child: Column(
+                      
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
 
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      BoldText(text: 'Explore Nearby Estates',
-                          color: AppColors.PRIMARY_DARK,
-                          size: 20),
-                    ],
-                  ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            BoldText(text: 'Explore Nearby Estates',
+                                color: AppColors.PRIMARY_DARK,
+                                size: 20),
+                          ],
+                        ),
 
-                  SizedBox(height: height / 30,),
-                  Row(
-                    children: [
+                        SizedBox(height: height / 30,),
+                        Row(
+                          children: [
 
-                      Home_Listing(width: width,
-                        height: height,
-                        src: "assets/Home/homeba.png",
-                        location: "Jakarta indonesia",
-                        name: "Wings Tower",
-                        price : 220,
-                        rating: 4.9,
-                      ),
-                      SizedBox(width: width/30,),
+                            Home_Listing(width: width,
+                              height: height,
+                              src: "assets/Home/homeba.png",
+                              location: "Jakarta indonesia",
+                              name: "Wings Tower",
+                              price : 220,
+                              rating: 4.9,
+                            ),
+                            SizedBox(width: width/30,),
 
-                      Home_Listing(width: width,
-                        height: height,
-                        src: "assets/Home/homebb.png",
-                        location: "Jakarta indonesia",
-                        name: "Mil sper House",
-                        price : 271,
-                        rating: 4.8,
-                      ),
+                            Home_Listing(width: width,
+                              height: height,
+                              src: "assets/Home/homebb.png",
+                              location: "Jakarta indonesia",
+                              name: "Mil sper House",
+                              price : 271,
+                              rating: 4.8,
+                            ),
 
-                    ],
-                  ),
-                  SizedBox(height: height / 30,),
-                  Row(
-                    children: [
+                          ],
+                        ),
+                        SizedBox(height: height / 30,),
+                        Row(
+                          children: [
 
-                      Home_Listing(width: width,
-                        height: height,
-                        src: "assets/Home/homeba.png",
-                        location: "Jakarta indonesia",
-                        name: "Wings Tower",
-                        price : 220,
-                        rating: 4.9,
-                      ),
-                      SizedBox(width: width/30,),
+                            Home_Listing(width: width,
+                              height: height,
+                              src: "assets/Home/homeba.png",
+                              location: "Jakarta indonesia",
+                              name: "Wings Tower",
+                              price : 220,
+                              rating: 4.9,
+                            ),
+                            SizedBox(width: width/30,),
 
-                      Home_Listing(width: width,
-                        height: height,
-                        src: "assets/Home/homebb.png",
-                        location: "Jakarta indonesia",
-                        name: "Mil sper House",
-                        price : 271,
-                        rating: 4.8,
-                      ),
+                            Home_Listing(width: width,
+                              height: height,
+                              src: "assets/Home/homebb.png",
+                              location: "Jakarta indonesia",
+                              name: "Mil sper House",
+                              price : 271,
+                              rating: 4.8,
+                            ),
 
-                    ],
-                  ),
+                          ],
+                        ),
 
-                  SizedBox(height: height / 30,),
-                  Row(
-                    children: [
+                        SizedBox(height: height / 30,),
+                        Row(
+                          children: [
 
-                      Home_Listing(width: width,
-                        height: height,
-                        src: "assets/Home/homeba.png",
-                        location: "Jakarta indonesia",
-                        name: "Wings Tower",
-                        price : 220,
-                        rating: 4.9,
-                      ),
-                      SizedBox(width: width/30,),
+                            Home_Listing(width: width,
+                              height: height,
+                              src: "assets/Home/homeba.png",
+                              location: "Jakarta indonesia",
+                              name: "Wings Tower",
+                              price : 220,
+                              rating: 4.9,
+                            ),
+                            SizedBox(width: width/30,),
 
-                      Home_Listing(width: width,
-                        height: height,
-                        src: "assets/Home/homebb.png",
-                        location: "Jakarta indonesia",
-                        name: "Mil sper House",
-                        price : 271,
-                        rating: 4.8,
-                      ),
+                            Home_Listing(width: width,
+                              height: height,
+                              src: "assets/Home/homebb.png",
+                              location: "Jakarta indonesia",
+                              name: "Mil sper House",
+                              price : 271,
+                              rating: 4.8,
+                            ),
 
-                    ],
+                          ],
+                        ),
+
+                      ],),
                   ),
 
 

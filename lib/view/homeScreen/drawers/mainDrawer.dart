@@ -1,8 +1,10 @@
+import 'package:bhaile/widgets/Buttons.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 
 import '../../../Constants/AppColors.dart';
 import '../../../widgets/boldText.dart';
+import '../widgets/Botton_Sheet.dart';
 
 class MainDrawer extends StatelessWidget {
   const MainDrawer({
@@ -35,78 +37,102 @@ class MainDrawer extends StatelessWidget {
               SizedBox(
                 height: h / 100,
               ),
-              BoldText(text: 'Bhaile', size: 18.sp),
+              BoldText(text: 'Bhaile', size: 16.sp),
             ],
           ),
           Padding(
-            padding: EdgeInsets.only(left: w / 6),
+            padding: EdgeInsets.only(left: w / 30),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+
                 SizedBox(
                   height: h / 20,
                 ),
-                BoldText(
+                TextButton(onPressed: (){
+                  print("yes");
+
+                  showModalBottomSheet(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return CustomBottomSheet();
+                    },
+                  );
+
+                }, child: BoldText(text: "Select Location",size: 10.sp,color: AppColors.PRIMARY_DARK,),),
+                SizedBox(
+                  height: h / 80,
+                ),
+                TextButton(onPressed: (){}, child:       BoldText(
                   text: 'Listings',
-                  size: 16.sp,
+                  size: 10.sp,
                   color: AppColors.PRIMARY_DARK,
-                ),
+                ),),
+
                 SizedBox(
-                  height: h / 40,
+                  height: h / 80,
                 ),
-                BoldText(
+                TextButton(onPressed: (){}, child:   BoldText(
                   text: 'Services',
-                  size: 16.sp,
+                  size: 10.sp,
                   color: AppColors.PRIMARY_DARK,
-                ),
+                ),),
+
+
                 SizedBox(
-                  height: h / 40,
+                  height: h / 80,
                 ),
-                BoldText(
+                TextButton(onPressed: (){}, child:    BoldText(
                   text: 'Agents',
-                  size: 16.sp,
+                  size: 10.sp,
                   color: AppColors.PRIMARY_DARK,
-                ),
+                ),),
+
                 SizedBox(
-                  height: h / 40,
+                  height: h / 80,
                 ),
-                BoldText(
+                TextButton(onPressed: (){}, child:    BoldText(
                   text: 'Land Lords',
-                  size: 16.sp,
+                  size: 10.sp,
                   color: AppColors.PRIMARY_DARK,
-                ),
+                ),),
+
                 SizedBox(
-                  height: h / 40,
+                  height: h / 80,
                 ),
-                BoldText(
+                TextButton(onPressed: (){}, child:    BoldText(
                   text: 'Reviews',
-                  size: 16.sp,
+                  size: 10.sp,
                   color: AppColors.PRIMARY_DARK,
-                ),
+                ),),
+
                 SizedBox(
-                  height: h / 40,
+                  height: h / 80,
                 ),
-                BoldText(
+                TextButton(onPressed: (){}, child:   BoldText(
                   text: 'Messages',
-                  size: 16.sp,
+                  size: 10.sp,
                   color: AppColors.PRIMARY_DARK,
-                ),
+                ),),
+
                 SizedBox(
-                  height: h / 40,
+                  height: h / 80,
                 ),
-                BoldText(
+                TextButton(onPressed: (){}, child:   BoldText(
                   text: 'Notifications',
-                  size: 16.sp,
+                  size: 10.sp,
                   color: AppColors.PRIMARY_DARK,
-                ),
+                ),),
+
                 SizedBox(
-                  height: h / 40,
+                  height: h / 80,
                 ),
-                BoldText(
+                TextButton(onPressed: (){}, child:   BoldText(
                   text: 'Offers',
-                  size: 16.sp,
+                  size: 10.sp,
                   color: AppColors.PRIMARY_DARK,
-                ),
+                ),),
+
               ],
             ),
           )

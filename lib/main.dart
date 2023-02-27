@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 
+import 'controllers/homeScreenController.dart';
 import 'controllers/loginController.dart';
 
 void main() {
@@ -16,6 +17,7 @@ void main() {
       ChangeNotifierProvider(create: (_) => BottomNavigationBarCtrl()),
       ChangeNotifierProvider(create: (_) => LoginController()),
       ChangeNotifierProvider(create: (_) => RegisterationController()),
+      ChangeNotifierProvider(create: (_) => HomeScreenController()),
     ], child: const MyApp()),
   );
 }
