@@ -1,5 +1,7 @@
+import 'package:bhaile/controllers/homeScreenController.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 
 import '../../../Constants/AppColors.dart';
@@ -29,6 +31,7 @@ class Home_Listing extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var ctrl = context.read<HomeScreenController>();
     return Container(
 
       width: width / 2.4,
@@ -38,6 +41,7 @@ class Home_Listing extends StatelessWidget {
         color: Colors.grey[200],
 
       ),
+
 
 
       child: Column(
@@ -66,18 +70,44 @@ class Home_Listing extends StatelessWidget {
                     alignment: Alignment(width / 400, 0),
                     child: Padding(
                       padding: EdgeInsets.all(width / 40),
-                      child: Container(
+                      child:
+                      Consumer<HomeScreenController>(
+                        builder: (co, ct, ch) => ct.a== 0
+                            ? GestureDetector(
+                          onTap: (){
+                            ctrl.changeIndex(1);
+                          },
+                              child: Container(
 
                         width: width / 10,
                         height: height / 20,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.all(Radius.circular(80)),
-                          color: AppColors.PRIMARY,
+                          color: AppColors.WHITE,
 
                         ),
-                        child: Icon(Icons.favorite, color: Colors.white,),
+                                child: Icon(Icons.favorite_border, color:  Colors.red,),
                       ),
-                    ),),
+                            ):
+                            GestureDetector(
+                              onTap: (){
+                                ctrl.changeIndex(0);
+                              },
+                              child:Container(
+
+                              width: width / 10,
+                              height: height / 20,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.all(Radius.circular(80)),
+                                color: AppColors.WHITE,
+
+                              ),
+                              child: Icon(Icons.favorite_border, color: Colors.red,),
+                            ),),
+
+                    ),
+                    ),
+                  ),
 
                   Align(
                     alignment: Alignment(width / 400, 0),
@@ -93,7 +123,7 @@ class Home_Listing extends StatelessWidget {
 
                         ),
                         child: BoldText(
-                            text: price.toString(), color: Colors.white, size: 14.sp),
+                            text: price.toString(), color: Colors.white, size: 10.sp),
                       ),
                     ),),
                 ],
@@ -129,10 +159,7 @@ class Home_Listing extends StatelessWidget {
                     children: [
 
                       SizedBox(width: width / 50,),
-                      Image.asset("assets/Home/star.png"),
-                      SizedBox(width: width / 60,),
-                      BoldText(
-                          text: rating.toString(), color: AppColors.PRIMARY_DARK, size: 6.sp),
+
                       SizedBox(width: width / 60,),
                       Icon(Icons.location_on_sharp, size: height / 60,),
                       SizedBox(width: width / 60,),
@@ -157,3 +184,4 @@ class Home_Listing extends StatelessWidget {
     );
   }
 }
+

@@ -35,7 +35,7 @@ class OptionalDrawer extends StatelessWidget {
               SizedBox(
                 height: h / 100,
               ),
-              BoldText(text: 'Bhaile', size: 18.sp),
+              BoldText(text: 'Bhaile', size: 16.sp),
             ],
           ),
           Padding(
@@ -48,7 +48,7 @@ class OptionalDrawer extends StatelessWidget {
                 ),
                 BoldText(
                   text: 'Services',
-                  size: 16.sp,
+                  size: 10.sp,
                   color: AppColors.PRIMARY_DARK,
                 ),
                 SizedBox(
@@ -56,7 +56,7 @@ class OptionalDrawer extends StatelessWidget {
                 ),
                 BoldText(
                   text: 'Listings',
-                  size: 16.sp,
+                  size: 10.sp,
                   color: AppColors.PRIMARY_DARK,
                 ),
                 SizedBox(
@@ -64,7 +64,7 @@ class OptionalDrawer extends StatelessWidget {
                 ),
                 BoldText(
                   text: 'Agents',
-                  size: 16.sp,
+                  size: 10.sp,
                   color: AppColors.PRIMARY_DARK,
                 ),
                 SizedBox(
@@ -72,7 +72,7 @@ class OptionalDrawer extends StatelessWidget {
                 ),
                 BoldText(
                   text: 'Contacts',
-                  size: 16.sp,
+                  size: 10.sp,
                   color: AppColors.PRIMARY_DARK,
                 ),
                 SizedBox(
@@ -80,7 +80,7 @@ class OptionalDrawer extends StatelessWidget {
                 ),
                 BoldText(
                   text: 'Reviews',
-                  size: 16.sp,
+                  size: 10.sp,
                   color: AppColors.PRIMARY_DARK,
                 ),
                 SizedBox(
@@ -88,7 +88,7 @@ class OptionalDrawer extends StatelessWidget {
                 ),
                 BoldText(
                   text: 'Sign Up',
-                  size: 16.sp,
+                  size: 10.sp,
                   color: AppColors.PRIMARY_DARK,
                 ),
                 SizedBox(
@@ -96,7 +96,7 @@ class OptionalDrawer extends StatelessWidget {
                 ),
                 BoldText(
                   text: 'Sign In',
-                  size: 16.sp,
+                  size: 10.sp,
                   color: AppColors.PRIMARY_DARK,
                 ),
               ],
