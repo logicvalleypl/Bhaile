@@ -7,7 +7,7 @@ import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 
 class ThreeButtons extends StatelessWidget {
-  const ThreeButtons({
+  const  ThreeButtons({
     super.key,
     required this.w,
   });
@@ -91,7 +91,7 @@ class FixedButton extends StatelessWidget {
                 children: [
                   BoldText(
                     text: text,
-                    size: 12.sp,
+                    size: 10.sp,
                   ),
                 ],
               ),
