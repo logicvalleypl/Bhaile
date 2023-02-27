@@ -1,5 +1,6 @@
 import 'package:bhaile/Constants/AppColors.dart';
 import 'package:bhaile/view/homeScreen/drawers/mainDrawer.dart';
+import 'package:bhaile/view/homeScreen/widgets/Home_Listing.dart';
 import 'package:bhaile/view/homeScreen/widgets/firstListview.dart';
 import 'package:bhaile/view/homeScreen/widgets/happyCustomers.dart';
 import 'package:bhaile/view/homeScreen/widgets/secondListview.dart';
@@ -20,6 +21,8 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     var w = MediaQuery.of(context).size.width;
     var h = MediaQuery.of(context).size.height;
+    var width= w;
+    var height= h;
 
     return SafeArea(
         child: Scaffold(
@@ -94,6 +97,105 @@ class HomeScreen extends StatelessWidget {
                     height: h / 80,
                   ),
                   HappyCustomers(h: h, w: w),
+
+                  Container(
+                    width:w/5,
+                    height: h/5,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.all(Radius.elliptical(w / 30, w / 30)),
+                    ),
+
+                  ),
+
+                  SizedBox(height: height / 10,),
+
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      BoldText(text: 'Explore Nearby Estates',
+                          color: AppColors.PRIMARY_DARK,
+                          size: 20),
+                    ],
+                  ),
+
+                  SizedBox(height: height / 30,),
+                  Row(
+                    children: [
+
+                      Home_Listing(width: width,
+                        height: height,
+                        src: "assets/Home/homeba.png",
+                        location: "Jakarta indonesia",
+                        name: "Wings Tower",
+                        price : 220,
+                        rating: 4.9,
+                      ),
+                      SizedBox(width: width/30,),
+
+                      Home_Listing(width: width,
+                        height: height,
+                        src: "assets/Home/homebb.png",
+                        location: "Jakarta indonesia",
+                        name: "Mil sper House",
+                        price : 271,
+                        rating: 4.8,
+                      ),
+
+                    ],
+                  ),
+                  SizedBox(height: height / 30,),
+                  Row(
+                    children: [
+
+                      Home_Listing(width: width,
+                        height: height,
+                        src: "assets/Home/homeba.png",
+                        location: "Jakarta indonesia",
+                        name: "Wings Tower",
+                        price : 220,
+                        rating: 4.9,
+                      ),
+                      SizedBox(width: width/30,),
+
+                      Home_Listing(width: width,
+                        height: height,
+                        src: "assets/Home/homebb.png",
+                        location: "Jakarta indonesia",
+                        name: "Mil sper House",
+                        price : 271,
+                        rating: 4.8,
+                      ),
+
+                    ],
+                  ),
+
+                  SizedBox(height: height / 30,),
+                  Row(
+                    children: [
+
+                      Home_Listing(width: width,
+                        height: height,
+                        src: "assets/Home/homeba.png",
+                        location: "Jakarta indonesia",
+                        name: "Wings Tower",
+                        price : 220,
+                        rating: 4.9,
+                      ),
+                      SizedBox(width: width/30,),
+
+                      Home_Listing(width: width,
+                        height: height,
+                        src: "assets/Home/homebb.png",
+                        location: "Jakarta indonesia",
+                        name: "Mil sper House",
+                        price : 271,
+                        rating: 4.8,
+                      ),
+
+                    ],
+                  ),
+
+
                 ],
               ),
             )));

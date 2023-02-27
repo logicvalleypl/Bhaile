@@ -73,6 +73,7 @@ flutter:
     - assets/Splash/
     - assets/preferable/
     - assets/payments/
+    - assets/Home/
 
   # assets:
   #   - images/a_dot_burr.jpeg
