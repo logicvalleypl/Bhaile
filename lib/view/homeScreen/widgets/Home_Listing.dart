@@ -5,11 +5,192 @@ import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 
 import '../../../Constants/AppColors.dart';
+import '../../../Models/Home_LIst_Model.dart';
 import '../../../Widgets/Texts.dart';
 import '../../../widgets/boldText.dart';
 
 class Home_Listing extends StatelessWidget {
-  const Home_Listing({
+   Home_Listing({
+    super.key,
+    required this.model,
+     required this.index
+    // required this.width,
+    // required this.height,
+    // required this.name,
+    // required this.location,
+    // required this.price,
+    // required this.rating,
+    // required this.src,
+  });
+  Home_List_Model model;
+  int index;
+  // final double width;
+  // final double height;
+  // final String name;
+  // final String location;
+  // final String src;
+  // final double rating;
+  // final double price;
+
+
+  @override
+  Widget build(BuildContext context) {
+    double width=360;
+
+    double height=720;
+    var ctrl = context.read<HomeScreenController>();
+    return Container(
+
+      width: width / 2.4,
+      height: height / 3.5,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.all(Radius.circular(20)),
+        color: Colors.grey[200],
+
+      ),
+
+      child: Column(
+        children: [
+          Padding(
+            padding: EdgeInsets.fromLTRB(width / 60, width / 60, width / 60, 0),
+            child: Container(
+              width: width / 2.5,
+              height: height / 4.5,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.all(Radius.circular(10)),
+                color: Colors.grey[200],
+                image: DecorationImage(
+                  image: AssetImage(model.src),
+                  fit: BoxFit.fill,
+                ),
+              ),
+
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+
+
+                children: [
+
+
+
+                  Align(
+                    alignment: Alignment(width / 400, 0),
+                    child: Padding(
+                      padding: EdgeInsets.all(width / 40),
+                      child:  Consumer<HomeScreenController>(builder: (co,ct,ch)=>ct.Data_List[index].favourite?GestureDetector(
+                        onTap: (){
+                          ctrl.fab(false,index);
+                        },
+                        child:Container(
+
+                          width: width / 10,
+                          height: height / 20,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.all(Radius.circular(80)),
+                            color: AppColors.WHITE,
+
+                          ),
+                          child: Icon(Icons.favorite_border, color: Colors.red,),
+                        ),):GestureDetector(
+                        onTap: (){
+                          ctrl.fab(true,index);
+                        },
+                        child:Container(
+
+                          width: width / 10,
+                          height: height / 20,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.all(Radius.circular(80)),
+                            color: AppColors.PRIMARY,
+
+                          ),
+                          child: Icon(Icons.favorite, color: Colors.white,),
+                        ),) ),
+
+                    ),
+                  ),
+
+                  Align(
+                    alignment: Alignment(width / 400, 0),
+                    child: Padding(
+                      padding: EdgeInsets.all(width / 40),
+                      child: Container(
+
+                        width: width / 4,
+                        height: height / 30,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.all(Radius.circular(15)),
+                          color: AppColors.PRIMARY_DARK,
+
+                        ),
+                        child: BoldText(
+                            text: model.price.toString(), color: Colors.white, size: 10.sp),
+                      ),
+                    ),),
+                ],
+              ),
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.all(width / 60),
+            child: Container(
+              width: width / 2.5,
+              height: height / 13,
+              decoration: BoxDecoration(
+
+                color: Colors.grey[200],
+
+              ),
+
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+
+
+                  Align(
+                      alignment: Alignment(-width / 500, 0),
+                      child: BoldText(text: model.name,
+                          color: AppColors.PRIMARY_DARK,
+                          size: 7.sp)),
+
+                  SizedBox(height: height / 200,),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+
+                      SizedBox(width: width / 50,),
+
+                      SizedBox(width: width / 60,),
+                      Icon(Icons.location_on_sharp, size: height / 60,),
+                      SizedBox(width: width / 60,),
+                      SimpleText(text: model.location,
+                          color: Colors.grey[400]!,
+                          size: 5.sp),
+
+
+
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ),
+
+
+        ],
+      ),
+
+
+    );
+  }
+}
+
+
+
+
+class Home_Listing_onchecked extends StatelessWidget {
+  const Home_Listing_onchecked({
     super.key,
     required this.width,
     required this.height,
@@ -42,8 +223,6 @@ class Home_Listing extends StatelessWidget {
 
       ),
 
-
-
       child: Column(
         children: [
           Padding(
@@ -70,42 +249,23 @@ class Home_Listing extends StatelessWidget {
                     alignment: Alignment(width / 400, 0),
                     child: Padding(
                       padding: EdgeInsets.all(width / 40),
-                      child:
-                      Consumer<HomeScreenController>(
-                        builder: (co, ct, ch) => ct.a== 0
-                            ? GestureDetector(
-                          onTap: (){
-                            ctrl.changeIndex(1);
-                          },
-                              child: Container(
+                      child:GestureDetector(
+                        onTap: (){
+                          ctrl.changeIndex(1);
+                        },
+                        child: Container(
 
-                        width: width / 10,
-                        height: height / 20,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.all(Radius.circular(80)),
-                          color: AppColors.WHITE,
+                          width: width / 10,
+                          height: height / 20,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.all(Radius.circular(80)),
+                            color: AppColors.PRIMARY,
 
+                          ),
+                          child: Icon(Icons.favorite, color: AppColors.WHITE,),
                         ),
-                                child: Icon(Icons.favorite_border, color:  Colors.red,),
                       ),
-                            ):
-                            GestureDetector(
-                              onTap: (){
-                                ctrl.changeIndex(0);
-                              },
-                              child:Container(
 
-                              width: width / 10,
-                              height: height / 20,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.all(Radius.circular(80)),
-                                color: AppColors.WHITE,
-
-                              ),
-                              child: Icon(Icons.favorite_border, color: Colors.red,),
-                            ),),
-
-                    ),
                     ),
                   ),
 
@@ -151,7 +311,7 @@ class Home_Listing extends StatelessWidget {
                       alignment: Alignment(-width / 500, 0),
                       child: BoldText(text: name,
                           color: AppColors.PRIMARY_DARK,
-                          size: 10.sp)),
+                          size: 8.sp)),
 
                   SizedBox(height: height / 200,),
                   Row(

@@ -2,31 +2,31 @@ import 'package:bhaile/constants/AppColors.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 
-// class BoldText extends StatelessWidget {
-//   const BoldText({
-//     super.key,
-//     required this.text,
-//     required this.color,
-//     required this.size,
-//   });
+class Bold_Text extends StatelessWidget {
+  const Bold_Text({
+    super.key,
+    required this.text,
+    required this.color,
+    required this.size,
+  });
 
-//   final String text;
-//   final Color color;
-//   final double size;
+  final String text;
+  final Color color;
+  final double size;
 
-//   @override
-//   Widget build(BuildContext context) {
-//     return Text(
-//       text,
-//       textAlign: TextAlign.center,
-//       style: TextStyle(
-//         fontSize: size,
-//         color: color,
-//         fontWeight: FontWeight.bold,
-//       ),
-//     );
-//   }
-// }
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      text,
+      textAlign: TextAlign.center,
+      style: TextStyle(
+        fontSize: size,
+        color: color,
+        fontWeight: FontWeight.bold,
+      ),
+    );
+  }
+}
 
 class SimpleText extends StatelessWidget {
   const SimpleText(

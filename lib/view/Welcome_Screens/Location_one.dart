@@ -1,9 +1,13 @@
 import 'dart:async';
 
+import 'package:bhaile/controllers/homeScreenController.dart';
+import 'package:bhaile/view/homeScreen/homeScreen.dart';
+import 'package:bhaile/view/homeScreen/widgets/Botton_Sheet.dart';
 import 'package:bhaile/widgets/boldText.dart';
 import 'package:flutter/material.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 
 import '../../Constants/AppColors.dart';
@@ -46,6 +50,7 @@ class _Location_oneState extends State<Location_one> {
   FocusNode _focusNode = FocusNode();
   @override
   Widget build(BuildContext context) {
+    var ctrl = context.read<HomeScreenController>();
     var width = MediaQuery.of(context).size.width;
     var height = MediaQuery.of(context).size.height;
     return SafeArea(
@@ -227,11 +232,18 @@ class _Location_oneState extends State<Location_one> {
                                           ),
                                           GestureDetector(
                                             onTap: () {
-                                              Navigator.push(
-                                                  context,
-                                                  MaterialPageRoute(
-                                                      builder: (context) =>
-                                                          Preferable_one()));
+
+                                              ctrl.b==0? Navigator.push(
+                                                    context,
+                                                    MaterialPageRoute(
+                                                        builder: (context) =>
+                                                            Preferable_one())):   showModalBottomSheet(
+                                                context: context,
+                                                builder: (BuildContext context) {
+                                                  return CustomBottomSheet();
+                                                },
+                                              );
+
                                             },
                                             child: BoldText(
                                               text: 'Yes',

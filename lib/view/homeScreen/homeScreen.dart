@@ -13,24 +13,36 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 
+import '../../Models/Home_LIst_Model.dart';
 import '../../controllers/homeScreenController.dart';
 import '../../controllers/payment_provider.dart';
 import 'drawers/optionalDrawer.dart';
 
+
+
 class HomeScreen extends StatelessWidget {
   HomeScreen({super.key, this.notLoggedIn = false});
+
   bool notLoggedIn;
+
   @override
   Widget build(BuildContext context) {
-    var w = MediaQuery.of(context).size.width;
-    var h = MediaQuery.of(context).size.height;
-    var width= w;
-    var height= h;
+    var w = MediaQuery
+        .of(context)
+        .size
+        .width;
+    var h = MediaQuery
+        .of(context)
+        .size
+        .height;
+    var width = w;
+    var height = h;
+    var ctrlll=
+context.read<HomeScreenController>();
 
 
     return SafeArea(
         child: Scaffold(
-
             drawer: notLoggedIn
                 ? OptionalDrawer(h: h, w: w)
                 : MainDrawer(h: h, w: w),
@@ -97,107 +109,70 @@ class HomeScreen extends StatelessWidget {
                     height: h / 80,
                   ),
                   HappyCustomers(h: h, w: w),
-
-              SizedBox(height: height/30,),
-
-
+                  SizedBox(
+                    height: height / 30,
+                  ),
                   Padding(
-                    padding: EdgeInsets.all(w/20),
+                    padding: EdgeInsets.all(w / 20),
                     child: Column(
-                      
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-
                         Row(
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
-                            BoldText(text: 'Explore Nearby Estates',
+                            BoldText(
+                                text: 'Explore Nearby Estates',
                                 color: AppColors.PRIMARY_DARK,
                                 size: 20),
                           ],
                         ),
-
-                        SizedBox(height: height / 30,),
-                        Row(
-                          children: [
-
-                            Home_Listing(width: width,
-                              height: height,
-                              src: "assets/Home/homeba.png",
-                              location: "Jakarta indonesia",
-                              name: "Wings Tower",
-                              price : 220,
-                              rating: 4.9,
-                            ),
-                            SizedBox(width: width/30,),
-
-                            Home_Listing(width: width,
-                              height: height,
-                              src: "assets/Home/homebb.png",
-                              location: "Jakarta indonesia",
-                              name: "Mil sper House",
-                              price : 271,
-                              rating: 4.8,
-                            ),
-
-                          ],
-                        ),
-                        SizedBox(height: height / 30,),
-                        Row(
-                          children: [
-
-                            Home_Listing(width: width,
-                              height: height,
-                              src: "assets/Home/homeba.png",
-                              location: "Jakarta indonesia",
-                              name: "Wings Tower",
-                              price : 220,
-                              rating: 4.9,
-                            ),
-                            SizedBox(width: width/30,),
-
-                            Home_Listing(width: width,
-                              height: height,
-                              src: "assets/Home/homebb.png",
-                              location: "Jakarta indonesia",
-                              name: "Mil sper House",
-                              price : 271,
-                              rating: 4.8,
-                            ),
-
-                          ],
+                        SizedBox(
+                          height: height / 30,
                         ),
 
-                        SizedBox(height: height / 30,),
-                        Row(
-                          children: [
 
-                            Home_Listing(width: width,
-                              height: height,
-                              src: "assets/Home/homeba.png",
-                              location: "Jakarta indonesia",
-                              name: "Wings Tower",
-                              price : 220,
-                              rating: 4.9,
-                            ),
-                            SizedBox(width: width/30,),
-
-                            Home_Listing(width: width,
-                              height: height,
-                              src: "assets/Home/homebb.png",
-                              location: "Jakarta indonesia",
-                              name: "Mil sper House",
-                              price : 271,
-                              rating: 4.8,
-                            ),
-
-                          ],
+                        SizedBox(
+                          height: height / 30,
                         ),
 
-                      ],),
+                        Consumer<HomeScreenController>(
+                          builder: (context, c, d) {
+                            return GridView.builder(
+                              gridDelegate:
+                              SliverGridDelegateWithFixedCrossAxisCount(
+                                mainAxisExtent: height/3.4,
+                                crossAxisCount: 2,
+                                crossAxisSpacing: 10,
+                                mainAxisSpacing: 10,
+                              ),
+                              shrinkWrap: true,
+                              itemCount: c.Data_List.length,
+                              itemBuilder: (BuildContext context, int index) {
+                                return
+                                  // Column(
+                                  // children: [
+                                  Home_Listing(
+                                      model:c.Data_List[index],
+                                        index: index,
+
+                                        // width: width,
+                                        // height: height,
+                                        // name:  Data_List[index].name,
+                                        // location: Data_List[index].location,
+                                        // price: Data_List[index].price,
+                                        // rating: Data_List[index].rating,
+                                        // src: Data_List[index].src,
+
+                                  //   ),
+                                  // ],
+                                );
+                              },
+                            );
+                          }
+                        ),
+                      ],
+                    ),
                   ),
-
-
                 ],
               ),
             )));
