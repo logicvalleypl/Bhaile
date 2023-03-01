@@ -1,23 +1,26 @@
 
+import '../view/homeScreen/widgets/Home_Listing.dart';
+
 class Home_List_Model
 {
-  const Home_List_Model({
-    required this.width,
-    required this.height,
+   Home_List_Model({
+
     required this.name,
     required this.location,
     required this.price,
     required this.rating,
     required this.src,
+    required this.favourite,
   });
 
-  final double width;
-  final double height;
   final String name;
+   bool favourite;
   final String location;
   final String src;
   final double rating;
   final double price;
+
+
 
 
 
