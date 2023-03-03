@@ -2,17 +2,19 @@ import 'package:bhaile/constants/AppColors.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 
+
 class Bold_Text extends StatelessWidget {
   const Bold_Text({
-    super.key,
-    required this.text,
+   required this.text,
     required this.color,
     required this.size,
+    super.key,
   });
 
   final String text;
   final Color color;
   final double size;
+
 
   @override
   Widget build(BuildContext context) {

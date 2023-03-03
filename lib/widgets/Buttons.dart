@@ -56,7 +56,7 @@ class Icon_Button extends StatelessWidget {
       child: Row(
         children: [
           Image.asset(source),
-          SimpleText(text: text, size: 11.sp, color: Colors.black),
+          SimpleText(text: text, size: 8.sp, color: Colors.black),
         ],
       ),
       onPressed: ontap,
