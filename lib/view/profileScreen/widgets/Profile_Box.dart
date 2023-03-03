@@ -27,7 +27,7 @@ class Profile_Box extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(18),
 
-        border: Border.all(color: AppColors.PRIMARY_DARK),
+        border: Border.all(color: AppColors.GREY),
       ),
 
       child:Column(
@@ -36,8 +36,11 @@ class Profile_Box extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
 
-          SimpleText(text: texta, color: AppColors.BLACK, size: 10.sp),
+          SimpleText(text: texta, color: AppColors.PRIMARY_DARK, size: 10.sp),
           SimpleText(text: textb, color: AppColors.BLACK, size: 8.sp),
+
+
+
         ],
       ),
     );

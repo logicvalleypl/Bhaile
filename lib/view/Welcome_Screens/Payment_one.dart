@@ -136,9 +136,9 @@ class _Payment_oneState extends State<Payment_one> {
                         Container(
                             width: width,
                             child: Consumer<MyProvider>(
-                              builder: (co, ct, ch) => ct.check == 1
+                              builder: (co, ct, ch) => ct.num == 1
                                   ? Paypal(width: width, height: height)
-                                  : ct.check == 2
+                                  : ct.num == 2
                                       ? Master_Card(
                                           width: width, height: height)
                                       : Container(),
