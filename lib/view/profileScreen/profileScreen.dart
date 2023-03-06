@@ -10,6 +10,7 @@ import 'package:sizer/sizer.dart';
 
 import '../../controllers/Profile_Controller.dart';
 import '../../controllers/homeScreenController.dart';
+import '../../widgets/Buttons.dart';
 import '../homeScreen/widgets/Home_Listing.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -45,22 +46,10 @@ class ProfileScreen extends StatelessWidget {
                   SizedBox(
                     width: w / 4,
                   ),
-                  Container(
-                    width: w / 8,
-                    height: h / 16,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(80),
-                      color: Colors.grey[200],
-                    ),
-                    child: IconButton(
-                        icon: Icon(Icons.settings),
-                        onPressed: () {  Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) =>
-                                    Edit_Profile()));},
-                        color: AppColors.PRIMARY_DARK),
-                  ),
+                  Icon_Buttonn(w: w, h: h,icon: Icon(Icons.settings),ontap: (){Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => Edit_Profile()));}),
                 ],
               ),
               SizedBox(
@@ -364,3 +353,5 @@ class ProfileScreen extends StatelessWidget {
     ));
   }
 }
+
+

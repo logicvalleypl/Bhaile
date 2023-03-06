@@ -64,6 +64,38 @@ class Icon_Button extends StatelessWidget {
   }
 }
 
+class Icon_Buttonn extends StatelessWidget {
+  const Icon_Buttonn({
+    super.key,
+    required this.w,
+    required this.h,
+    required this.ontap,
+    required this.icon,
+  });
+
+  final double w;
+  final double h;
+  final VoidCallback ontap;
+  final Icon icon;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: w / 8,
+      height: h / 16,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(80),
+        color: Colors.grey[200],
+      ),
+      child: IconButton(
+          icon:icon,
+          onPressed: ontap,
+          color: AppColors.PRIMARY_DARK),
+    );
+  }
+}
+
+
 class Text_Button extends StatelessWidget {
   Text_Button({super.key, required this.text, required this.ontap});
 

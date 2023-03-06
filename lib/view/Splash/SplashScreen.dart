@@ -5,6 +5,7 @@ import 'package:sizer/sizer.dart';
 
 import '../../constants/AppColors.dart';
 import '../../widgets/boldText.dart';
+import '../Offers/Offers.dart';
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({

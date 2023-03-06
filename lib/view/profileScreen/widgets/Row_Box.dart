@@ -47,3 +47,47 @@ class Profile_Row_Box extends StatelessWidget {
     );
   }
 }
+
+class Offers_Row_Box extends StatelessWidget {
+  const Offers_Row_Box({
+    super.key,
+    required this.w,
+    required this.h,
+    required this.text,
+    required this.colora,
+    required this.colorb,
+    required this.ontap,
+
+
+  });
+
+  final double w;
+  final double h;
+  final String text;
+  final Color colora;
+  final Color colorb;
+  final VoidCallback ontap;
+
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding:  EdgeInsets.all(w/50),
+      child: GestureDetector(
+        onTap: ontap,
+        child: Container(
+
+          padding: EdgeInsets.all(w/220),
+          width: w/2.5,
+          height: h/14,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(20),
+            color: colora,
+          ),
+          child: SimpleText(text: text,color:colorb,size: 7.sp,align: TextAlign.center),alignment: Alignment.center,
+        ),
+      ),
+    );
+  }
+}
+
