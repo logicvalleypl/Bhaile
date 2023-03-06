@@ -37,27 +37,3 @@ class Input_Feild extends StatelessWidget {
   }
 }
 
-class Small_feilds extends StatelessWidget {
-  const Small_feilds({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: 60.sp,
-      height: 55.sp,
-      child: TextFormField(
-        decoration: InputDecoration(
-          filled: true,
-          fillColor: Colors.grey[300],
-          border: OutlineInputBorder(
-              borderSide: BorderSide.none,
-              borderRadius: BorderRadius.circular(12)),
-          contentPadding:
-              EdgeInsets.symmetric(vertical: 23.sp, horizontal: 10.sp),
-        ),
-      ),
-    );
-  }
-}

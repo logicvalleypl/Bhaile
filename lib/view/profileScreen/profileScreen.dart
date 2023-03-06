@@ -309,16 +309,6 @@ class ProfileScreen extends StatelessWidget {
                                           model: c.Data_List[index],
                                           index: index,
 
-                                          // width: width,
-                                          // height: height,
-                                          // name:  Data_List[index].name,
-                                          // location: Data_List[index].location,
-                                          // price: Data_List[index].price,
-                                          // rating: Data_List[index].rating,
-                                          // src: Data_List[index].src,
-
-                                          //   ),
-                                          // ],
                                         );
                                       },
                                     );
@@ -360,16 +350,6 @@ class ProfileScreen extends StatelessWidget {
                                           model: c.Data_List[index],
                                           index: index,
 
-                                          // width: width,
-                                          // height: height,
-                                          // name:  Data_List[index].name,
-                                          // location: Data_List[index].location,
-                                          // price: Data_List[index].price,
-                                          // rating: Data_List[index].rating,
-                                          // src: Data_List[index].src,
-
-                                          //   ),
-                                          // ],
                                         );
                                       },
                                     );

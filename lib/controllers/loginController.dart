@@ -6,6 +6,7 @@ class LoginController extends ChangeNotifier {
     this.type = type;
   }
 
+  String? pass;
   bool showPassword = true;
 
   setShowPassword(bool a) {
@@ -13,9 +14,37 @@ class LoginController extends ChangeNotifier {
     notifyListeners();
   }
 
+  validatedate(String e) {
+    if (e.isEmpty) {
+      return "Please add issued date";
+    }
+    return null;
+  }
+
+  validateccv(String e) {
+    if (e.isEmpty) {
+      return "Please add CCV";
+    }
+    return null;
+  }
+
   validateEmail(String e) {
     if (e.isEmpty) {
       return "Please provide your email";
+    }
+    return null;
+  }
+
+  validatename(String e) {
+    if (e.isEmpty) {
+      return "Please enter name";
+    }
+    return null;
+  }
+
+  validatephone(String e) {
+    if (e.isEmpty) {
+      return "Please enter your phone number";
     }
     return null;
   }
@@ -28,8 +57,55 @@ class LoginController extends ChangeNotifier {
       return "Please provide your password";
     }
     if (e.length < 6) {
-      return "The password must be mroe than 6 characters";
+      return "The password must be more than 6 characters";
     }
     return null;
   }
+
+  validatechangePassword(String? e) {
+    if (e == null) {
+      return "Please provide your password";
+    }
+    if (e.isEmpty) {
+      return "Please provide your password";
+    }
+    if (e.length < 6) {
+      return "The password must be more than 6 characters";
+    }
+    return null;
+  }
+  validatesavePassword(String? e) {
+    if (e == null) {
+      return "Please provide your password";
+    }
+    if (e.isEmpty) {
+      return "Please provide your password";
+    }
+    if (e.length < 6) {
+      return "The password must be more than 6 characters";
+    }
+    pass=e;
+  }
+
+  validatecnfrmPassword(String? e) {
+    if (e == null) {
+      return "Please provide your password";
+    }
+    if (e.isEmpty) {
+      return "Please provide your password";
+    }
+    if (e.length < 6) {
+      return "The password must be more than 6 characters";
+    }
+    if(pass != e)
+      {
+        return "The passwords do not match";
+      }
+    return null;
+  }
+
+
+
+
+
 }

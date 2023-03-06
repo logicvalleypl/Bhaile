@@ -5,6 +5,7 @@ import 'package:sizer/sizer.dart';
 
 import '../../../Widgets/Payment_widgets.dart';
 import '../../../Widgets/Texts.dart';
+import '../../../controllers/loginController.dart';
 import '../../../controllers/payment_provider.dart';
 import '../../../widgets/Buttons.dart';
 import '../../../widgets/circularButton.dart';
@@ -23,6 +24,9 @@ class Payment extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var PController = context.read<LoginController>();
+
+
     return SingleChildScrollView(
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -105,21 +109,13 @@ class Payment extends StatelessWidget {
                   width: w,
                   child: Consumer<MyProvider>(
                     builder: (co, ct, ch) => ct.num == 1
-                        ? Paypal(width: w, height: h)
+                        ? Paypal(width: w, height: h,ctrl:PController)
                         : ct.num == 2
                         ? Master_Card(
-                        width: w, height: h)
+                        width: w, height: h,ctrl:PController)
                         : Container(),
                   )),
-              SizedBox(
-                height: h / 30,
-              ),
-              CircularButton(
-                ontap: () {},
-                heightDivididedBy: 12,
-                text: 'Change',
-                widthDividedBy: 1.35,
-              ),
+
 
             ],
           ),

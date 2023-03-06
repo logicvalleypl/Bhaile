@@ -77,23 +77,10 @@ class Home_Listing extends StatelessWidget {
                     alignment: Alignment(width / 400, 0),
                     child: Padding(
                       padding: EdgeInsets.all(width / 40),
-                      child:  Consumer<HomeScreenController>(builder: (co,ct,ch)=>ct.Data_List[index].favourite?GestureDetector(
+                      child:  Consumer<HomeScreenController>(builder: (co,ct,ch)=>ct.Data_List[index].favourite?
+                      GestureDetector(
                         onTap: (){
                           ctrl.fab(false,index);
-                        },
-                        child:Container(
-
-                          width: width / 10,
-                          height: height / 20,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.all(Radius.circular(80)),
-                            color: AppColors.WHITE,
-
-                          ),
-                          child: Icon(Icons.favorite_border, color: Colors.red,),
-                        ),):GestureDetector(
-                        onTap: (){
-                          ctrl.fab(true,index);
                         },
                         child:Container(
 
@@ -105,7 +92,21 @@ class Home_Listing extends StatelessWidget {
 
                           ),
                           child: Icon(Icons.favorite, color: Colors.white,),
-                        ),) ),
+                        ),)   :  GestureDetector(
+                          onTap: (){
+                    ctrl.fab(true,index);
+                    },
+                      child:Container(
+
+                        width: width / 10,
+                        height: height / 20,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.all(Radius.circular(80)),
+                          color: AppColors.WHITE,
+
+                        ),
+                        child: Icon(Icons.favorite_border, color: Colors.red,),
+                      ),)),
 
                     ),
                   ),
