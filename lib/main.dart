@@ -1,3 +1,4 @@
+import 'package:bhaile/controllers/Offers_Controller.dart';
 import 'package:bhaile/controllers/Profile_Controller.dart';
 import 'package:bhaile/controllers/bottomNavigationBarCtrl.dart';
 import 'package:bhaile/controllers/payment_provider.dart';
@@ -20,6 +21,7 @@ void main() {
       ChangeNotifierProvider(create: (_) => RegisterationController()),
       ChangeNotifierProvider(create: (_) => HomeScreenController()),
       ChangeNotifierProvider(create: (_) => Profile_Controller()),
+      ChangeNotifierProvider(create: (_) => Offers_Controller()),
     ], child: const MyApp()),
   );
 }
