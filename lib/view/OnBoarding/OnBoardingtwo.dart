@@ -1,4 +1,4 @@
-import 'package:bhaile/view/Login/Login.dart';
+import 'package:bhaile/view/Login/loginScreen.dart';
 import 'package:bhaile/view/Signup/Signup_one.dart';
 import 'package:bhaile/widgets/Buttons.dart';
 import 'package:bhaile/widgets/Texts.dart';

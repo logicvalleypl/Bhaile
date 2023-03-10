@@ -2,15 +2,14 @@ import 'package:bhaile/constants/AppColors.dart';
 import 'package:bhaile/controllers/loginController.dart';
 import 'package:bhaile/view/OnBoarding/OnBoardingone.dart';
 import 'package:bhaile/view/Signup/Signup_one.dart';
-import 'package:bhaile/view/Welcome_Screens/Location_one.dart';
 import 'package:bhaile/widgets/Buttons.dart';
-import 'package:bhaile/widgets/Form_Feilds.dart';
 import 'package:bhaile/widgets/Texts.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 
 import '../../widgets/circularButton.dart';
+import '../../widgets/myTextField.dart';
 
 class Login extends StatelessWidget {
   Login({Key? key}) : super(key: key);
@@ -28,13 +27,6 @@ class Login extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              // Positioned(
-              //   top: 0.sp,
-              //   child:
-              // Container(
-              //     width: width,
-              //     height: height / 5.5,
-              // child:
               Image.asset(
                 "assets/Signup/Loginback.png",
                 width: width,
@@ -63,7 +55,7 @@ class Login extends StatelessWidget {
                             key: loginKey,
                             child: Column(
                               children: [
-                                Input_Feild(
+                                MyTextField(
                                     ctrl: emailCtrl,
                                     text: "Email",
                                     validate: (s) =>
@@ -79,10 +71,10 @@ class Login extends StatelessWidget {
                                     selector: (context, ctrl) =>
                                         ctrl.showPassword,
                                     builder: (context, showPassword, a) {
-                                      return Input_Feild(
+                                      return MyTextField(
                                           ctrl: passwordCtrl,
                                           validate: (s) => loginController
-                                              .validatePassword(s),
+                                              .validatePassword(s!),
                                           isPassword: showPassword,
                                           text: "Password",
                                           icon: Icon(
@@ -119,12 +111,6 @@ class Login extends StatelessWidget {
                                           ontap: () {
                                             loginController
                                                 .setShowPassword(true);
-
-                                            // Navigator.push(
-                                            //     context,
-                                            //     MaterialPageRoute(
-                                            //         builder: (context) =>
-                                            //             OnBoardingone()));
                                           });
                                 }),
                           ],
@@ -135,10 +121,10 @@ class Login extends StatelessWidget {
                         CircularButton(
                           ontap: () {
                             if (loginKey.currentState!.validate()) {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => Location_one()));
+                              loginController.login(
+                                  context: context,
+                                  email: emailCtrl.text,
+                                  password: passwordCtrl.text);
                             }
                           },
                           heightDivididedBy: 12,

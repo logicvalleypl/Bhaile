@@ -1,5 +1,5 @@
 import 'package:bhaile/constants/AppColors.dart';
-import 'package:bhaile/controllers/loginController.dart';
+import 'package:bhaile/controllers/registrationController.dart';
 import 'package:bhaile/view/OnBoarding/OnBoardingtwo.dart';
 import 'package:bhaile/widgets/boldText.dart';
 import 'package:flutter/material.dart';
@@ -7,7 +7,7 @@ import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 
 class ThreeButtons extends StatelessWidget {
-  const  ThreeButtons({
+  const ThreeButtons({
     super.key,
     required this.w,
   });
@@ -16,7 +16,7 @@ class ThreeButtons extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var loginController = context.read<LoginController>();
+    var loginController = context.read<RegisterationController>();
     return Padding(
       padding: EdgeInsets.only(left: w / 20, right: w / 20),
       child: SingleChildScrollView(
@@ -27,7 +27,7 @@ class ThreeButtons extends StatelessWidget {
               w: w,
               text: 'Tanet',
               onTap: () {
-                loginController.changeType(type: '1');
+                loginController.changeType(type: 'Tenant');
                 Navigator.of(context)
                     .push(MaterialPageRoute(builder: (c) => OnBoardingtwo()));
               },
@@ -36,7 +36,7 @@ class ThreeButtons extends StatelessWidget {
               w: w,
               text: "Land Lord",
               onTap: () {
-                loginController.changeType(type: '2');
+                loginController.changeType(type: 'landlord');
                 Navigator.of(context)
                     .push(MaterialPageRoute(builder: (c) => OnBoardingtwo()));
               },
@@ -45,7 +45,7 @@ class ThreeButtons extends StatelessWidget {
               w: w,
               text: 'Agent',
               onTap: () {
-                loginController.changeType(type: '3');
+                loginController.changeType(type: 'agent');
                 Navigator.of(context)
                     .push(MaterialPageRoute(builder: (c) => OnBoardingtwo()));
               },

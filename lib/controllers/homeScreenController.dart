@@ -1,16 +1,14 @@
 import 'package:flutter/foundation.dart';
 
-import '../Models/Home_LIst_Model.dart';
+import '../model/estateModel.dart';
 
 class HomeScreenController extends ChangeNotifier {
+  int indexx = 0;
+  int screenState = 0;
+  int bottomSheet = 0;
 
-  int a=0;
-  int b=0;
-  int c=0;
-
-
-  final List<Home_List_Model> Data_List = [
-    Home_List_Model(
+  final List<EstateModel> nearByEstates = [
+    EstateModel(
       src: "assets/Home/homeba.png",
       location: "Jakarta indonesia",
       name: "Wings Tower",
@@ -18,7 +16,7 @@ class HomeScreenController extends ChangeNotifier {
       rating: 4.9,
       favourite: false,
     ),
-    Home_List_Model(
+    EstateModel(
       src: "assets/Home/homebb.png",
       location: "Jakarta indonesia",
       name: "Milsper House Tower",
@@ -26,7 +24,7 @@ class HomeScreenController extends ChangeNotifier {
       rating: 4.9,
       favourite: false,
     ),
-    Home_List_Model(
+    EstateModel(
       src: "assets/Home/homeba.png",
       location: "Jakarta indonesia",
       name: "Wings Tower",
@@ -34,7 +32,31 @@ class HomeScreenController extends ChangeNotifier {
       rating: 4.9,
       favourite: false,
     ),
-    Home_List_Model(
+    EstateModel(
+      src: "assets/Home/homebb.png",
+      location: "Jakarta indonesia",
+      name: "Milsper House Tower",
+      price: 270,
+      rating: 4.9,
+      favourite: false,
+    ),
+    EstateModel(
+      src: "assets/Home/homebb.png",
+      location: "Jakarta indonesia",
+      name: "Milsper House Tower",
+      price: 270,
+      rating: 4.9,
+      favourite: false,
+    ),
+    EstateModel(
+      src: "assets/Home/homeba.png",
+      location: "Jakarta indonesia",
+      name: "Wings Tower",
+      price: 220,
+      rating: 4.9,
+      favourite: false,
+    ),
+    EstateModel(
       src: "assets/Home/homebb.png",
       location: "Jakarta indonesia",
       name: "Milsper House Tower",
@@ -44,28 +66,23 @@ class HomeScreenController extends ChangeNotifier {
     ),
   ];
 
- fab(bool state,int index){
-  Data_List[index].favourite = state;
-  notifyListeners();
-}
+  likeOrDisLike(bool state, int index) {
+    nearByEstates[index].favourite = state;
+    notifyListeners();
+  }
 
   changeIndex(int i) {
-    a = i;
+    indexx = i;
     notifyListeners();
   }
 
-  Screen_State(int temp)
-  {
-    b=temp;
+  changeScreenState(int temp) {
+    screenState = temp;
     notifyListeners();
   }
 
-  Bottom_Sheet(int temp)
-  {
-    c= temp;
+  funBottomSheet(int temp) {
+    bottomSheet = temp;
     notifyListeners();
-
   }
-
-
 }

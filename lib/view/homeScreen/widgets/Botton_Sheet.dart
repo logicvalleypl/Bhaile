@@ -45,8 +45,8 @@ class CustomBottomSheet extends StatelessWidget {
                 ),
                 CircularButton(
                   ontap: () {
-                    ctrl.Screen_State(1);
-                    print(ctrl.b);
+                    ctrl.changeScreenState(1);
+                    print(ctrl.screenState);
                     Navigator.push(
                         context,
                         MaterialPageRoute(
@@ -71,7 +71,7 @@ class CustomBottomSheet extends StatelessWidget {
                 height: h / 4.2,
                 color: Colors.grey[100],
                 child: (Consumer<HomeScreenController>(
-                  builder: (co, ct, ch) => ct.c == 1
+                  builder: (co, ct, ch) => ct.bottomSheet == 1
                       ? Column(
                           children: [
                             Sheet_Location(
@@ -80,18 +80,18 @@ class CustomBottomSheet extends StatelessWidget {
                               location: "Logic Valley Awan Town Rawalpindi",
                               color: AppColors.PRIMARY_DARK,
                               ontap: () {
-                                ctrl.Bottom_Sheet(1);
+                                ctrl.funBottomSheet(1);
                               },
                               colora: AppColors.WHITE,
                             ),
                             Sheet_Location(
-                                w: w,
-                                h: h,
-                                location: "Air University E9 Islamabad",
-                                color: Colors.grey[200]!,
-                                ontap: () {
-                                  ctrl.Bottom_Sheet(0);
-                                },
+                              w: w,
+                              h: h,
+                              location: "Air University E9 Islamabad",
+                              color: Colors.grey[200]!,
+                              ontap: () {
+                                ctrl.funBottomSheet(0);
+                              },
                               colora: AppColors.PRIMARY_DARK,
                             ),
                           ],
@@ -99,25 +99,23 @@ class CustomBottomSheet extends StatelessWidget {
                       : Column(
                           children: [
                             Sheet_Location(
-                              w: w,
-                              h: h,
-                              location: "Logic Valley Awan Town Rawalpindi",
-                              color: Colors.grey[200]!,
-                              ontap: () {
-                                ctrl.Bottom_Sheet(1);
-                              },
-                                colora: AppColors.PRIMARY_DARK
-                            ),
+                                w: w,
+                                h: h,
+                                location: "Logic Valley Awan Town Rawalpindi",
+                                color: Colors.grey[200]!,
+                                ontap: () {
+                                  ctrl.funBottomSheet(1);
+                                },
+                                colora: AppColors.PRIMARY_DARK),
                             Sheet_Location(
                                 w: w,
                                 h: h,
                                 location: "Air University E9 Islamabad",
                                 color: AppColors.PRIMARY_DARK,
                                 ontap: () {
-                                  ctrl.Bottom_Sheet(0);
+                                  ctrl.funBottomSheet(0);
                                 },
-                                colora: AppColors.WHITE
-                                ),
+                                colora: AppColors.WHITE),
                           ],
                         ),
                 )),

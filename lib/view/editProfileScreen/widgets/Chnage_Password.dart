@@ -1,13 +1,10 @@
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 
 import '../../../Constants/AppColors.dart';
 import '../../../Widgets/Texts.dart';
-import '../../../widgets/Form_Feilds.dart';
 import '../../../widgets/circularButton.dart';
-
+import '../../../widgets/myTextField.dart';
 
 class Change_Password extends StatelessWidget {
   const Change_Password({
@@ -35,7 +32,7 @@ class Change_Password extends StatelessWidget {
             children: [
               Padding(
                 padding: EdgeInsets.all(w / 40),
-                child: Input_Feild(
+                child: MyTextField(
                     text: "Old Password",
                     icon: Icon(Icons.lock_outline),
                     validate: (String? a) {},
@@ -44,7 +41,7 @@ class Change_Password extends StatelessWidget {
               ),
               Padding(
                 padding: EdgeInsets.all(w / 40),
-                child: Input_Feild(
+                child: MyTextField(
                     text: "New Password",
                     icon: Icon(Icons.lock_outline),
                     validate: (String? a) {},
@@ -53,7 +50,7 @@ class Change_Password extends StatelessWidget {
               ),
               Padding(
                 padding: EdgeInsets.all(w / 40),
-                child: Input_Feild(
+                child: MyTextField(
                     text: "Confirm Password",
                     icon: Icon(Icons.lock_outline),
                     validate: (String? a) {},

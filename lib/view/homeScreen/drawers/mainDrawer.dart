@@ -1,5 +1,7 @@
-import 'package:bhaile/widgets/Buttons.dart';
+import 'package:bhaile/controllers/loginController.dart';
+import 'package:bhaile/controllers/profileControllers/profileController.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 
 import '../../../Constants/AppColors.dart';
@@ -45,94 +47,125 @@ class MainDrawer extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-
                 SizedBox(
                   height: h / 20,
                 ),
-                TextButton(onPressed: (){
-                  print("yes");
+                TextButton(
+                  onPressed: () {
+                    print("yes");
 
-                  showModalBottomSheet(
-                    context: context,
-                    builder: (BuildContext context) {
-                      return CustomBottomSheet();
-                    },
-                  );
-
-                }, child: BoldText(text: "Select Location",size: 10.sp,color: AppColors.PRIMARY_DARK,),),
+                    showModalBottomSheet(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return CustomBottomSheet();
+                      },
+                    );
+                  },
+                  child: BoldText(
+                    text: "Select Location",
+                    size: 10.sp,
+                    color: AppColors.PRIMARY_DARK,
+                  ),
+                ),
                 SizedBox(
                   height: h / 80,
                 ),
-                TextButton(onPressed: (){}, child:       BoldText(
-                  text: 'Listings',
-                  size: 10.sp,
-                  color: AppColors.PRIMARY_DARK,
-                ),),
-
+                TextButton(
+                  onPressed: () {},
+                  child: BoldText(
+                    text: 'Listings',
+                    size: 10.sp,
+                    color: AppColors.PRIMARY_DARK,
+                  ),
+                ),
                 SizedBox(
                   height: h / 80,
                 ),
-                TextButton(onPressed: (){}, child:   BoldText(
-                  text: 'Services',
-                  size: 10.sp,
-                  color: AppColors.PRIMARY_DARK,
-                ),),
-
-
+                TextButton(
+                  onPressed: () {},
+                  child: BoldText(
+                    text: 'Services',
+                    size: 10.sp,
+                    color: AppColors.PRIMARY_DARK,
+                  ),
+                ),
                 SizedBox(
                   height: h / 80,
                 ),
-                TextButton(onPressed: (){}, child:    BoldText(
-                  text: 'Agents',
-                  size: 10.sp,
-                  color: AppColors.PRIMARY_DARK,
-                ),),
-
+                TextButton(
+                  onPressed: () {},
+                  child: BoldText(
+                    text: 'Agents',
+                    size: 10.sp,
+                    color: AppColors.PRIMARY_DARK,
+                  ),
+                ),
                 SizedBox(
                   height: h / 80,
                 ),
-                TextButton(onPressed: (){}, child:    BoldText(
-                  text: 'Land Lords',
-                  size: 10.sp,
-                  color: AppColors.PRIMARY_DARK,
-                ),),
-
+                TextButton(
+                  onPressed: () {},
+                  child: BoldText(
+                    text: 'Land Lords',
+                    size: 10.sp,
+                    color: AppColors.PRIMARY_DARK,
+                  ),
+                ),
                 SizedBox(
                   height: h / 80,
                 ),
-                TextButton(onPressed: (){}, child:    BoldText(
-                  text: 'Reviews',
-                  size: 10.sp,
-                  color: AppColors.PRIMARY_DARK,
-                ),),
-
+                TextButton(
+                  onPressed: () {},
+                  child: BoldText(
+                    text: 'Reviews',
+                    size: 10.sp,
+                    color: AppColors.PRIMARY_DARK,
+                  ),
+                ),
                 SizedBox(
                   height: h / 80,
                 ),
-                TextButton(onPressed: (){}, child:   BoldText(
-                  text: 'Messages',
-                  size: 10.sp,
-                  color: AppColors.PRIMARY_DARK,
-                ),),
-
+                TextButton(
+                  onPressed: () {},
+                  child: BoldText(
+                    text: 'Messages',
+                    size: 10.sp,
+                    color: AppColors.PRIMARY_DARK,
+                  ),
+                ),
                 SizedBox(
                   height: h / 80,
                 ),
-                TextButton(onPressed: (){}, child:   BoldText(
-                  text: 'Notifications',
-                  size: 10.sp,
-                  color: AppColors.PRIMARY_DARK,
-                ),),
-
+                TextButton(
+                  onPressed: () {},
+                  child: BoldText(
+                    text: 'Notifications',
+                    size: 10.sp,
+                    color: AppColors.PRIMARY_DARK,
+                  ),
+                ),
                 SizedBox(
                   height: h / 80,
                 ),
-                TextButton(onPressed: (){}, child:   BoldText(
-                  text: 'Offers',
-                  size: 10.sp,
-                  color: AppColors.PRIMARY_DARK,
-                ),),
-
+                TextButton(
+                  onPressed: () {},
+                  child: BoldText(
+                    text: 'Offers',
+                    size: 10.sp,
+                    color: AppColors.PRIMARY_DARK,
+                  ),
+                ),
+                TextButton(
+                  onPressed: () {
+                    context.read<LoginController>().signOut(
+                        context.read<ProfileController>().getToken(), context);
+                  },
+                  child: BoldText(
+                    text: 'Logout',
+                    size: 10.sp,
+                    color: AppColors.PRIMARY_DARK,
+                  ),
+                ),
               ],
             ),
           )

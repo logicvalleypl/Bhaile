@@ -1,11 +1,12 @@
 import 'package:bhaile/constants/AppColors.dart';
 import 'package:bhaile/view/Welcome_Screens/Location_one.dart';
 import 'package:bhaile/widgets/Buttons.dart';
-import 'package:bhaile/widgets/Form_Feilds.dart';
 import 'package:bhaile/widgets/Texts.dart';
 import 'package:bhaile/widgets/circularButton.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
+
+import '../../widgets/myTextField.dart';
 
 class User extends StatefulWidget {
   const User({Key? key}) : super(key: key);
@@ -92,7 +93,7 @@ class _UserState extends State<User> {
               Padding(
                 padding: EdgeInsets.all(19.sp),
                 child: Column(children: [
-                  Input_Feild(
+                  MyTextField(
                     ctrl: TextEditingController(),
                     validate: (a) {},
                     text: "Name",
@@ -101,7 +102,7 @@ class _UserState extends State<User> {
                   SizedBox(
                     height: height / 60,
                   ),
-                  Input_Feild(
+                  MyTextField(
                     validate: (a) {},
                     ctrl: TextEditingController(),
                     text: "Phone number",
@@ -110,7 +111,7 @@ class _UserState extends State<User> {
                   SizedBox(
                     height: height / 60,
                   ),
-                  Input_Feild(
+                  MyTextField(
                     validate: (a) {},
                     ctrl: TextEditingController(),
                     text: "Email",

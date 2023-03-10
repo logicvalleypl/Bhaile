@@ -1,14 +1,24 @@
-import 'package:bhaile/controllers/Profile_Controller.dart';
+import 'dart:async';
+
 import 'package:bhaile/controllers/bottomNavigationBarCtrl.dart';
 import 'package:bhaile/controllers/payment_provider.dart';
+import 'package:bhaile/controllers/profileControllers/profileController.dart';
 import 'package:bhaile/controllers/registrationController.dart';
+import 'package:bhaile/model/agentModel.dart';
+import 'package:bhaile/model/landLordModel.dart';
+import 'package:bhaile/model/tenantModel.dart';
+import 'package:bhaile/services/repos/authRepo.dart';
 import 'package:bhaile/view/Splash/SplashScreen.dart';
+import 'package:bhaile/view/bottomNavBar/bottomNavigationBar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sizer/sizer.dart';
 
 import 'controllers/homeScreenController.dart';
 import 'controllers/loginController.dart';
+import 'controllers/profileControllers/editProfileController.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -19,7 +29,8 @@ void main() {
       ChangeNotifierProvider(create: (_) => LoginController()),
       ChangeNotifierProvider(create: (_) => RegisterationController()),
       ChangeNotifierProvider(create: (_) => HomeScreenController()),
-      ChangeNotifierProvider(create: (_) => Profile_Controller()),
+      ChangeNotifierProvider(create: (_) => ProfileController()),
+      ChangeNotifierProvider(create: (_) => EditProfileController()),
     ], child: const MyApp()),
   );
 }
@@ -31,6 +42,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return Sizer(
         builder: (c, v, d) => MaterialApp(
+              builder: EasyLoading.init(),
               title: 'Flutter Demo',
               theme: ThemeData(
                 fontFamily: "Lato",
@@ -64,10 +76,99 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   @override
-  Widget build(BuildContext context) {
-    return SplashScreen();
-    // return Location_one();
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    Timer(const Duration(seconds: 3), () async {
+      var a = await AgentModel.getType();
 
-    // return BottomNavigationBarScreen();
+      if (a == null) {
+        Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+                builder: (context) => SplashScreen(
+                      showLoading: false,
+                    )));
+      } else {
+        if (a == "tenant") {
+          var user = await TenantModel.get();
+          context.read<ProfileController>().setTenant(user!);
+          Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => CheckEmailWidget(
+                        token: user.token,
+                      )));
+        }
+        if (a == "landlord") {
+          var user = await LandLordModel.get();
+          context.read<ProfileController>().setLandLord(user!);
+
+          Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => CheckEmailWidget(
+                        token: user.token,
+                      )));
+        }
+        if (a == "agent") {
+          var user = await AgentModel.get();
+          context.read<ProfileController>().setAgent(user!);
+
+          Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => CheckEmailWidget(
+                        token: user.token,
+                      )));
+        }
+      }
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return SplashScreen(
+      showLoading: true,
+    );
+  }
+}
+
+class CheckEmailWidget extends StatelessWidget {
+  CheckEmailWidget({
+    super.key,
+    required this.token,
+  });
+  var token;
+
+  @override
+  Widget build(BuildContext context) {
+    return FutureBuilder<bool>(
+        future: checkIfTokenIsValid(token ?? "", context),
+        builder: (context, data) {
+          return data.hasData
+              ? data.data!
+                  ? BottomNavigationBarScreen()
+                  : SplashScreen(
+                      showLoading: false,
+                    )
+              : SplashScreen(
+                  showLoading: true,
+                );
+        });
+  }
+
+  Future<bool> checkIfTokenIsValid(String token, BuildContext context) async {
+    bool a = await AuthRepo.checkToken(token: token);
+    print(token);
+    if (!a) {
+      SharedPreferences pp = await SharedPreferences.getInstance();
+      await pp.clear();
+    }
+    if (a) {
+      context.read<ProfileController>().setUser(token);
+    }
+
+    return a;
   }
 }
