@@ -1,28 +1,17 @@
-
-import '../view/homeScreen/widgets/Home_Listing.dart';
-
-class Home_List_Model
-{
-   Home_List_Model({
-
+class EstateModel {
+  EstateModel({
     required this.name,
     required this.location,
     required this.price,
     required this.rating,
     required this.src,
-    required this.favourite,
+    this.favourite = false,
   });
 
   final String name;
-   bool favourite;
+  bool favourite;
   final String location;
   final String src;
   final double rating;
   final double price;
-
-
-
-
-
-
 }

@@ -1,6 +1,7 @@
-import 'package:bhaile/widgets/Form_Feilds.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
+
+import 'myTextField.dart';
 
 class Master_Card extends StatelessWidget {
   const Master_Card({
@@ -22,7 +23,7 @@ class Master_Card extends StatelessWidget {
         children: [
           Container(
             width: width / 1.13,
-            child: Input_Feild(
+            child: MyTextField(
               validate: (a) {},
               ctrl: TextEditingController(),
               text: "Name",
@@ -34,7 +35,7 @@ class Master_Card extends StatelessWidget {
           ),
           Container(
             width: width / 1.13,
-            child: Input_Feild(
+            child: MyTextField(
               validate: (a) {},
               ctrl: TextEditingController(),
               text: "Card_no",
@@ -116,7 +117,7 @@ class Paypal extends StatelessWidget {
           children: [
             Container(
               width: width / 1.13,
-              child: Input_Feild(
+              child: MyTextField(
                 validate: (a) {},
                 ctrl: TextEditingController(),
                 text: "Name",
@@ -128,7 +129,7 @@ class Paypal extends StatelessWidget {
             ),
             Container(
               width: width / 1.13,
-              child: Input_Feild(
+              child: MyTextField(
                 validate: (a) {},
                 ctrl: TextEditingController(),
                 text: "Email",

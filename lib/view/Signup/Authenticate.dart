@@ -1,6 +1,5 @@
 import 'package:bhaile/Constants/AppColors.dart';
 import 'package:bhaile/controllers/registrationController.dart';
-import 'package:bhaile/view/bottomNavBar/bottomNavigationBar.dart';
 import 'package:bhaile/widgets/Buttons.dart';
 import 'package:bhaile/widgets/Texts.dart';
 import 'package:flutter/material.dart';
@@ -9,12 +8,17 @@ import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 
 class Authenticate extends StatelessWidget {
-  const Authenticate({Key? key}) : super(key: key);
+  const Authenticate({
+    Key? key,
+    required this.email,
+  }) : super(key: key);
+  final String email;
 
   @override
   Widget build(BuildContext context) {
+    var registrationController = context.read<RegisterationController>();
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      context.read<RegisterationController>().chanegSecons();
+      registrationController.chanegSecons();
     });
     var width = MediaQuery.of(context).size.width;
     var height = MediaQuery.of(context).size.height;
@@ -64,11 +68,11 @@ class Authenticate extends StatelessWidget {
                     },
                     //runs when every textfield is filled
                     onSubmit: (String verificationCode) {
-                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                          content:
-                              Text('Code has been verified successfully')));
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (c) => BottomNavigationBarScreen()));
+                      registrationController.verifyCode(
+                          code: verificationCode,
+                          context: context,
+                          email: email);
+
                       // showDialog(
                       //     context: context,
                       //     builder: (context) {

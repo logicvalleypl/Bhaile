@@ -1,23 +1,24 @@
 import 'package:bhaile/constants/AppColors.dart';
 import 'package:bhaile/controllers/registrationController.dart';
-import 'package:bhaile/view/Signup/Authenticate.dart';
 import 'package:bhaile/widgets/Buttons.dart';
-import 'package:bhaile/widgets/Form_Feilds.dart';
 import 'package:bhaile/widgets/Texts.dart';
 import 'package:bhaile/widgets/circularButton.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 
+import '../../widgets/myTextField.dart';
+
 class Signup_one extends StatelessWidget {
   Signup_one({Key? key}) : super(key: key);
   var signUpKey = GlobalKey<FormState>();
   TextEditingController emailCtrl = TextEditingController();
-  TextEditingController nameCtrl = TextEditingController();
+  TextEditingController firstNameCtrl = TextEditingController();
+  TextEditingController lastNameCtrl = TextEditingController();
   TextEditingController passwordCtrl = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    var loginController = context.read<RegisterationController>();
+    var registerationController = context.read<RegisterationController>();
 
     var width = MediaQuery.of(context).size.width;
     var height = MediaQuery.of(context).size.height;
@@ -67,10 +68,11 @@ class Signup_one extends StatelessWidget {
                       key: signUpKey,
                       child: Column(
                         children: [
-                          Input_Feild(
-                              validate: (a) => loginController.validateName(a!),
-                              ctrl: nameCtrl,
-                              text: "Full name",
+                          MyTextField(
+                              validate: (a) =>
+                                  registerationController.validateFirst(a!),
+                              ctrl: firstNameCtrl,
+                              text: "First Name",
                               icon: Icon(
                                 Icons.account_circle_outlined,
                                 color: AppColors.PRIMARY_DARK,
@@ -78,9 +80,21 @@ class Signup_one extends StatelessWidget {
                           SizedBox(
                             height: height / 40,
                           ),
-                          Input_Feild(
+                          MyTextField(
                               validate: (a) =>
-                                  loginController.validateEmail(a!),
+                                  registerationController.validateLastName(a!),
+                              ctrl: lastNameCtrl,
+                              text: "Last Name",
+                              icon: Icon(
+                                Icons.account_circle_outlined,
+                                color: AppColors.PRIMARY_DARK,
+                              )),
+                          SizedBox(
+                            height: height / 40,
+                          ),
+                          MyTextField(
+                              validate: (a) =>
+                                  registerationController.validateEmail(a!),
                               ctrl: emailCtrl,
                               text: "Email",
                               icon: Icon(
@@ -93,10 +107,10 @@ class Signup_one extends StatelessWidget {
                           Selector<RegisterationController, bool>(
                               selector: (context, ctrl) => ctrl.showPassword,
                               builder: (context, showPassword, a) {
-                                return Input_Feild(
+                                return MyTextField(
                                     ctrl: passwordCtrl,
-                                    validate: (s) =>
-                                        loginController.validatePassword(s!),
+                                    validate: (s) => registerationController
+                                        .validatePassword(s!),
                                     isPassword: showPassword,
                                     text: "Password",
                                     icon: Icon(
@@ -117,20 +131,14 @@ class Signup_one extends StatelessWidget {
                                         ? Text_Button(
                                             text: "Show password",
                                             ontap: () {
-                                              loginController
+                                              registerationController
                                                   .setShowPassword(false);
                                             })
                                         : Text_Button(
                                             text: "Hide password",
                                             ontap: () {
-                                              loginController
+                                              registerationController
                                                   .setShowPassword(true);
-
-                                              // Navigator.push(
-                                              //     context,
-                                              //     MaterialPageRoute(
-                                              //         builder: (context) =>
-                                              //             OnBoardingone()));
                                             });
                                   }),
                             ],
@@ -141,10 +149,17 @@ class Signup_one extends StatelessWidget {
                           CircularButton(
                             ontap: () {
                               if (signUpKey.currentState!.validate()) {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => Authenticate()));
+                                registerationController.signUp(
+                                  context: context,
+                                  firstName: firstNameCtrl.text,
+                                  lastName: lastNameCtrl.text,
+                                  email: emailCtrl.text,
+                                  password: passwordCtrl.text,
+                                );
+                                // Navigator.push(
+                                //     context,
+                                //     MaterialPageRoute(
+                                //         builder: (context) => Authenticate()));
                               }
                             },
                             heightDivididedBy: 12,

@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:bhaile/controllers/homeScreenController.dart';
+import 'package:bhaile/services/network/globalApi.dart';
 import 'package:bhaile/view/homeScreen/homeScreen.dart';
 import 'package:bhaile/view/homeScreen/widgets/Botton_Sheet.dart';
 import 'package:bhaile/widgets/boldText.dart';
@@ -172,10 +173,8 @@ class _Location_oneState extends State<Location_one> {
                                       locations[0].longitude));
                                 } on NoResultFoundException catch (e) {
                                   locationDetailCtrl.clear();
-                                  ScaffoldMessenger.of(context).showSnackBar(
-                                      SnackBar(
-                                          content: Text(
-                                              "Sorry! The address was wrong\\n Please enter another address")));
+                                  sshowSnackBar(
+                                      "Sorry! The address was wrong\\n Please enter another address");
                                   _focusNode.unfocus();
                                 }
                               } else {
@@ -232,18 +231,19 @@ class _Location_oneState extends State<Location_one> {
                                           ),
                                           GestureDetector(
                                             onTap: () {
-
-                                              ctrl.b==0? Navigator.push(
-                                                    context,
-                                                    MaterialPageRoute(
-                                                        builder: (context) =>
-                                                            Preferable_one())):   showModalBottomSheet(
-                                                context: context,
-                                                builder: (BuildContext context) {
-                                                  return CustomBottomSheet();
-                                                },
-                                              );
-
+                                              ctrl.screenState == 0
+                                                  ? Navigator.push(
+                                                      context,
+                                                      MaterialPageRoute(
+                                                          builder: (context) =>
+                                                              Preferable_one()))
+                                                  : showModalBottomSheet(
+                                                      context: context,
+                                                      builder: (BuildContext
+                                                          context) {
+                                                        return CustomBottomSheet();
+                                                      },
+                                                    );
                                             },
                                             child: BoldText(
                                               text: 'Yes',

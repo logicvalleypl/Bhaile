@@ -1,11 +1,12 @@
-import 'package:bhaile/view/Login/Login.dart';
+import 'package:bhaile/view/Login/loginScreen.dart';
 import 'package:bhaile/view/Welcome_Screens/Location_one.dart';
 import 'package:bhaile/widgets/Buttons.dart';
-import 'package:bhaile/widgets/Form_Feilds.dart';
 import 'package:bhaile/widgets/Texts.dart';
 import 'package:bhaile/widgets/circularButton.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
+
+import '../../widgets/myTextField.dart';
 
 class Location_two extends StatefulWidget {
   const Location_two({Key? key}) : super(key: key);
@@ -84,7 +85,7 @@ class _Location_twoState extends State<Location_two> {
                         SizedBox(
                           height: height / 4,
                         ),
-                        Input_Feild(
+                        MyTextField(
                             validate: (a) {},
                             ctrl: TextEditingController(),
                             text: "Location Detail",

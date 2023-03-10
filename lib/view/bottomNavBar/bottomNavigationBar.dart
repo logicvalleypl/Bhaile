@@ -40,8 +40,9 @@ class BottomNavigationBarScreen extends StatelessWidget {
             selector: (a, b) => b.index,
             builder: (context, index, child) {
               return BottomNavigationBar(
-                  onTap: (i) =>
-                      context.read<BottomNavigationBarCtrl>().changeIndex(i),
+                  onTap: (i) => context
+                      .read<BottomNavigationBarCtrl>()
+                      .changeIndex(i, context),
                   currentIndex: index,
                   items: [
                     BottomNavigationBarItem(
